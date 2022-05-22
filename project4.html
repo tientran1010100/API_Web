@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="FX15060_Trần Minh Tiến">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project4</title>
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <style>
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+
+        #img1,
+        #img2,
+        #img3,
+        #img4 {
+            height: auto;
+            width: 100%;
+
+        }
+    </style>
+
+</head>
+
+<body>
+  <!--icon loading-->
+    <div class="loader"
+        style="position:fixed; height:50vw; width:100vw; background-color:whitesmoke;">
+        <br>
+        <img src="https://i.gifer.com/5Q0v.gif" style="display:block; margin:auto;">
+    </div>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light" id="dau-trang">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="project4.html">
+                <img src="https://vinhlong-funix.000webhostapp.com/logo.png" alt="logo" width="30" height="auto"
+                    class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav">
+                    <li>
+                        <a class="nav-link active" aria-current="page" href="project4.html">Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#cuoi-trang">Đăng nhập</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#cuoi-trang">Đăng ký</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#cuoi-trang">Hỗ trợ</a>
+                    </li>
+                    <li>
+                        <button id="searchBtn" class="btn btn-outline-secondary mx-2" type="button">Search</button>
+                    </li>
+                    <li>
+                        <button type="button" id="enBtn" class="btn btn-outline-secondary mx-2">Bài viết tiếng Anh</button>
+                    </li>
+                    <li>
+                        <button type="button" id="dateBtn" class="btn btn-outline-secondary mx-2">Tìm kiếm theo thời
+                            gian</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <h1 style="text-align:center">Trang tin tức cập nhật mới nhất</h1>
+    </header>
+
+    <content>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <img id="img1">
+                </div>
+                <div class="col-md-7">
+                    <div id="news1">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-5">
+                    <img id="img2">
+                </div>
+                <div class="col-md-7">
+                    <div id="news2">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-5">
+                    <img id="img3">
+                </div>
+                <div class="col-md-7">
+                    <div id="news3">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-5">
+                    <img id="img4">
+                </div>
+                <div class="col-md-7">
+                    <div id="news4">
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+
+    </content>
+
+    <div id="searchBar" class="container"
+        style="display:none;border:1px solid gray; height:30%; width:80%; bottom:50%; right:10%; position:fixed; background-color:whitesmoke;">
+        <div>
+            <button type="button" class="btn-close" aria-label="Close"
+                style="display:inline-block; position:absolute; right:5px; top:5px;"></button>
+        </div>
+        <br><br>
+        <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="searchRequest">
+            <button class="btn btn-outline-success" id="searchBtn2" type="button">Search</button>
+        </form>
+
+    </div>
+
+    <div id="dateBar" class="container"
+        style="display:none;border:1px solid gray; height:50%; width:80%; bottom:25%; right:10%; position:fixed; background-color:whitesmoke;">
+        <div>
+            <button type="button" class="btn-close" aria-label="Close"
+                style="display:inline-block; position:absolute; right:5px; top:5px;"></button>
+        </div>
+        <br><br>
+        <form>
+            <label for="Search">Search: </label>
+            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
+                id="searchRequestDate">
+            <br>
+            <label for="fromDate">From: </label>
+            <input class="form-control me-2" type="text" placeholder="2020-01-01" aria-label="fromDate" id="fromDate">
+            <br>
+            <label for="toDate">To: </label>
+            <input class="form-control me-2" type="text" placeholder="2021-01-01" aria-label="toDate" id="toDate">
+            <br>
+            <button class="btn btn-outline-success" id="dateBtn2" type="button">Search</button>
+        </form>
+
+    </div>
+
+    <footer class="footer" style="background-color:whitesmoke;">
+        <br>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>LIÊN HỆ</h2>
+                    <P> </P>
+                    <P>Điện thoại: 090.194.9988</P>
+                    <P>Email: </P>
+                    <h2>Nguồn</h2>
+                    <p>Thông tin trang web được lấy từ webside: <a href="https://gnews.io/" alt="Gnews">Gnews.io</a></p>
+                    <br>
+                </div>
+                <div class="col-md-6">
+                    <div id="cuoi-trang"></div>
+                    <h2>Hỗ trợ</h2>
+                    <p>Đang cập nhật</p>
+                    <H2>Đăng ký</H2>
+                    <p>Đang cập nhật</p>
+                    <H2>Đăng nhập</H2>
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <br>
+    </footer>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+
+        //scroll top buttom
+        var mybutton = document.getElementById("myBtn");
+        window.onscroll = function () { scrollFunction() };
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        };
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+
+        /////////////////
+        $(document).ready(function () {
+            
+            $("#searchBtn").click(function () {
+                $("#searchBar").css("display", "inline-block")
+            });
+            $("#searchBtn2").click(function () {
+                $("#searchBar").css("display", "none")
+            });
+            $("#dateBtn").click(function () {
+                $("#dateBar").css("display", "inline-block")
+            });
+            $("#dateBtn2").click(function () {
+                $("#dateBar").css("display", "none")
+            });
+            $(".btn-close").click(function () {
+                $("#searchBar, #dateBar").css("display", "none")
+            })
+            ///////////////
+       
+
+            ///////// 
+            $(".loader").show();
+            fetch('https://gnews.io/api/v4/top-headlines?&token=4ab891f227ea54c4fd8fd4f2f8fe85b4')
+
+                .then(function (response) {
+                    return response.json();
+                    
+                })
+
+                .then(data => {
+
+                     //      (console.log(data.articles[0].url));
+
+                    $("#news1").append('<a target="_blank" href="' + data.articles[0].url + '">' + "<h3>" + data.articles[0].title + "</h3></a>" +
+                        "<p>" + data.articles[0].content + "</p>" +
+                        "<em>" + data.articles[0].publishedAt + "</em><br>"
+                    )
+                    $("#news2").append('<a target="_blank" href="' + data.articles[1].url + '">' + "<h3>" + data.articles[1].title + "</h3></a>" +
+                        "<p>" + data.articles[1].content + "</p>" +
+                        "<em>" + data.articles[1].publishedAt + "</em><br>"
+                    )
+                    $("#news3").append('<a target="_blank" href="' + data.articles[2].url + '">' + "<h3>" + data.articles[2].title + "</h3></a>" +
+                        "<p>" + data.articles[2].content + "</p>" +
+                        "<em>" + data.articles[2].publishedAt + "</em><br>"
+                    )
+                    $("#news4").append('<a target="_blank" href="' + data.articles[3].url + '">' + "<h3>" + data.articles[3].title + "</h3></a>" +
+                        "<p>" + data.articles[3].content + "</p>" +
+                        "<em>" + data.articles[3].publishedAt + "</em><br>"
+                    )
+
+                    $("#img1").attr("src", data.articles[0].image)
+
+                    $("#img2").attr("src", data.articles[1].image)
+
+                    $("#img3").attr("src", data.articles[2].image)
+
+                    $("#img4").attr("src", data.articles[3].image)
+                    $(".loader").hide();
+                });
+            //end of loading API
+            //search data
+            $("#searchBtn2").click(function () {
+                let searchAPI = 'https://gnews.io/api/v4/search?q=' + document.getElementById("searchRequest").value + '&token=4ab891f227ea54c4fd8fd4f2f8fe85b4';
+                console.log(searchAPI);
+                $(".loader").show();
+                fetch(searchAPI)
+
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+
+                        console.log(data);
+
+                        $("#news1").empty()
+                        $("#news1").append('<a target="_blank" href="' + data.articles[0].url + '">' + "<h3>" + data.articles[0].title + "</h3></a>" +
+                            "<p>" + data.articles[0].content + "</p>" +
+                            "<em>" + data.articles[0].publishedAt + "</em><br>"
+                        )
+                        $("#news2").empty()
+                        $("#news2").append('<a target="_blank" href="' + data.articles[1].url + '">' + "<h3>" + data.articles[1].title + "</h3></a>" +
+                            "<p>" + data.articles[1].content + "</p>" +
+                            "<em>" + data.articles[1].publishedAt + "</em><br>"
+                        )
+                        $("#news3").empty()
+                        $("#news3").append('<a target="_blank" href="' + data.articles[2].url + '">' + "<h3>" + data.articles[2].title + "</h3></a>" +
+                            "<p>" + data.articles[2].content + "</p>" +
+                            "<em>" + data.articles[2].publishedAt + "</em><br>"
+                        )
+                        $("#news4").empty()
+                        $("#news4").append('<a target="_blank" href="' + data.articles[3].url + '">' + "<h3>" + data.articles[3].title + "</h3></a>" +
+                            "<p>" + data.articles[3].content + "</p>" +
+                            "<em>" + data.articles[3].publishedAt + "</em><br>"
+                        )
+
+                        $("#img1").attr("src", data.articles[0].image)
+
+                        $("#img2").attr("src", data.articles[1].image)
+
+                        $("#img3").attr("src", data.articles[2].image)
+
+                        $("#img4").attr("src", data.articles[3].image)
+                        document.body.scrollTop = 0;
+                        document.documentElement.scrollTop = 0;
+                        $(".loader").hide();
+                    });
+            });
+            //end of search data
+            //begin of enBtn
+            $("#enBtn").click(function () {
+                $(".loader").show();
+                fetch('https://gnews.io/api/v4/top-headlines?&lang=en&token=4ab891f227ea54c4fd8fd4f2f8fe85b4')
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        console.log(data);
+                        $("#news1").empty()
+                        $("#news1").append('<a target="_blank" href="' + data.articles[0].url + '">' + "<h3>" + data.articles[0].title + "</h3></a>" +
+                            "<p>" + data.articles[0].content + "</p>" +
+                            "<em>" + data.articles[0].publishedAt + "</em><br>"
+                        )
+                        $("#news2").empty()
+                        $("#news2").append('<a target="_blank" href="' + data.articles[1].url + '">' + "<h3>" + data.articles[1].title + "</h3></a>" +
+                            "<p>" + data.articles[1].content + "</p>" +
+                            "<em>" + data.articles[1].publishedAt + "</em><br>"
+                        )
+                        $("#news3").empty()
+                        $("#news3").append('<a target="_blank" href="' + data.articles[2].url + '">' + "<h3>" + data.articles[2].title + "</h3></a>" +
+                            "<p>" + data.articles[2].content + "</p>" +
+                            "<em>" + data.articles[2].publishedAt + "</em><br>"
+                        )
+                        $("#news4").empty()
+                        $("#news4").append('<a target="_blank" href="' + data.articles[3].url + '">' + "<h3>" + data.articles[3].title + "</h3></a>" +
+                            "<p>" + data.articles[3].content + "</p>" +
+                            "<em>" + data.articles[3].publishedAt + "</em><br>"
+                        )
+
+                        $("#img1").attr("src", data.articles[0].image)
+
+                        $("#img2").attr("src", data.articles[1].image)
+
+                        $("#img3").attr("src", data.articles[2].image)
+
+                        $("#img4").attr("src", data.articles[3].image)
+                        document.body.scrollTop = 0;
+                        document.documentElement.scrollTop = 0;
+                        $(".loader").hide();
+                    });
+            });
+            //end of enBtn
+            //begin of search by date
+            $("#dateBtn2").click(function () {
+                let searchAPI = 'https://gnews.io/api/v4/search?q=' + document.getElementById("searchRequestDate").value + '&from=' + document.getElementById("fromDate").value + 'T08:11:32Z&to=' + document.getElementById("toDate").value + 'T08:11:32Z&token=4ab891f227ea54c4fd8fd4f2f8fe85b4';
+                console.log(searchAPI);
+                $(".loader").show();
+                fetch(searchAPI)
+
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+
+                        console.log(data);
+
+                        $("#news1").empty()
+                        $("#news1").append('<a target="_blank" href="' + data.articles[0].url + '">' + "<h3>" + data.articles[0].title + "</h3></a>" +
+                            "<p>" + data.articles[0].content + "</p>" +
+                            "<em>" + data.articles[0].publishedAt + "</em><br>"
+                        )
+                        $("#news2").empty()
+                        $("#news2").append('<a target="_blank" href="' + data.articles[1].url + '">' + "<h3>" + data.articles[1].title + "</h3></a>" +
+                            "<p>" + data.articles[1].content + "</p>" +
+                            "<em>" + data.articles[1].publishedAt + "</em><br>"
+                        )
+                        $("#news3").empty()
+                        $("#news3").append('<a target="_blank" href="' + data.articles[2].url + '">' + "<h3>" + data.articles[2].title + "</h3></a>" +
+                            "<p>" + data.articles[2].content + "</p>" +
+                            "<em>" + data.articles[2].publishedAt + "</em><br>"
+                        )
+                        $("#news4").empty()
+                        $("#news4").append('<a target="_blank" href="' + data.articles[3].url + '">' + "<h3>" + data.articles[3].title + "</h3></a>" +
+                            "<p>" + data.articles[3].content + "</p>" +
+                            "<em>" + data.articles[3].publishedAt + "</em><br>"
+                        )
+
+                        $("#img1").attr("src", data.articles[0].image)
+
+                        $("#img2").attr("src", data.articles[1].image)
+
+                        $("#img3").attr("src", data.articles[2].image)
+
+                        $("#img4").attr("src", data.articles[3].image)
+                        document.body.scrollTop = 0;
+                        document.documentElement.scrollTop = 0;
+                        $(".loader").hide();
+
+                    });
+            })
+
+        })
+    </script>
+</body>
+
+</html>
